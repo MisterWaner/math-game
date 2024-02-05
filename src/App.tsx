@@ -1,4 +1,5 @@
 import QuizzList from "./components/QuizzList/QuizzList";
+import Playground from "./components/Playground/Playground";
 
 function App() {
     return (
@@ -9,6 +10,7 @@ function App() {
 
             <main>
                 <QuizzList />
+                <Playground />
             </main>
         </>
     );
