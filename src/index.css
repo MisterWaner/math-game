@@ -11,6 +11,8 @@ html {
 }
 
 body {
+    height: 100%;
+    width: 100%;
     font-family: "Roboto", sans-serif;
     background: rgb(240, 171, 252);
     background: linear-gradient(
@@ -18,5 +20,25 @@ body {
         rgba(240, 171, 252, 1) 0%,
         rgba(217, 70, 239, 1) 50%,
         rgba(162, 28, 175, 1) 100%
-    );
+    ), no-repeat center center fixed;
+    background-size: cover;
+
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+
+    main {
+        height: calc(100dvh - 100px);
+        display: grid;
+        grid-template-columns: 25% 1fr;
+        grid-template-rows: 85% 1fr;
+    }
 }
