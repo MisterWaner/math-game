@@ -27,7 +27,7 @@
     justify-content: space-around;
 }
 .answer {
-    border: 1px solid #000;
+    border: 1px solid white;
     padding: 0.5rem 0.75rem;
     border-radius: 5px;
     cursor: pointer;
@@ -35,4 +35,11 @@
     &:hover {
         background-color: #f5d0fe;
     }
+}
+.questionButton {
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
