@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
-import styles from "./QuizzList.module.css";
+import styles from "./ButtonList.module.css";
 
-export default function QuizzList() {
+export default function ButtonList() {
     return (
         <div className={styles.container}>
             <h2>Choisi un quizz</h2>

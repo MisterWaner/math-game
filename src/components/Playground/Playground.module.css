@@ -5,7 +5,7 @@
     justify-content: center;
     height: 100%;
 
-    p {
+    .playgroundHeader {
         font-size: 1.5rem;
     }
 }

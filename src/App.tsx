@@ -1,4 +1,4 @@
-import QuizzList from "./components/QuizzList/QuizzList";
+import ButtonList from "./components/ButtonList/ButtonList";
 import Playground from "./components/Playground/Playground";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
             </header>
 
             <main>
-                <QuizzList />
+                <ButtonList />
                 <Playground />
             </main>
         </>
