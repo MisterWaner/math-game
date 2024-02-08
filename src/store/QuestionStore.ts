@@ -1,20 +1,12 @@
 import { create } from "zustand";
+import { generateQuestion, answer } from "../utils/generateMultiplication";
 
 type QuestionState = {
     question: string;
-    answer: string;
-    isSelected: boolean;
+    answer: number;
 }
 
-type Action = {
-    selectAnswer: (question: QuestionState['question'], answer: QuestionState['answer'], isSelected: QuestionState['isSelected']) => void;
-}
-
-export const useQuestionStore = create<QuestionState & Action>() ((set) => ({
-    question: '',
-    answer: '',
-    isSelected: false,
-    selectAnswer(question, answer, isSelected) {
-        set({ question, answer, isSelected });
-    }
+export const useQuestionStore = create<QuestionState>() (() => ({
+    question: generateQuestion(),
+    answer: answer,
 }))

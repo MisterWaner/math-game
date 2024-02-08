@@ -21,25 +21,46 @@
 }
 
 .answerContainer {
-    width: 100%;
+    width: 50%;
     margin-top: 1rem;
     display: flex;
-    justify-content: space-around;
-}
-.answer {
-    border: 1px solid white;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    cursor: pointer;
+    flex-direction: column;
+    gap: 0.25rem;
+    
+    label {
+        font-style: italic;
+        font-size: 0.85rem;
+    };
 
-    &:hover {
-        background-color: #f5d0fe;
+    input[type="text"] {
+        padding: 0.5rem 0.75rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
     }
 }
+
 .questionButton {
     width: 100%;
     margin-top: 3rem;
     display: flex;
     justify-content: start;
     align-items: center;
+}
+
+.result {
+    margin-top: 1rem;
+    background-color: #f5d0fe;
+    padding: 1rem;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: red;
+    font-weight: bold;
 }
