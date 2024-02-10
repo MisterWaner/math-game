@@ -4,14 +4,20 @@ type QuizzState = {
     title: string;
     isSelected: boolean;
     isShown: boolean;
-}
+    type: string;
+};
 
 type Action = {
-    selectQuizz: (title: QuizzState['title'], isSelected: QuizzState['isSelected']) => void;
-}
+    selectQuizz: (
+        title: QuizzState["title"],
+        isSelected: QuizzState["isSelected"],
+        type: QuizzState["type"]
+    ) => void;
+};
 
-export const useQuizzStore = create<QuizzState & Action>() ((set) => ({
-    title: '',
+export const useQuizzStore = create<QuizzState & Action>()((set) => ({
+    type: "",
+    title: "",
     isSelected: false,
     isShown: false,
     selectQuizz(title, isSelected) {
@@ -19,7 +25,5 @@ export const useQuizzStore = create<QuizzState & Action>() ((set) => ({
     },
     show(isShown: boolean) {
         set({ isShown });
-    }
+    },
 }));
-
-

@@ -17,10 +17,10 @@ export default function Card() {
     const checkAnswer = (userAnswer: string, answer: number) => {
         if (Number(userAnswer) === answer) {
             setText("Bravo !");
-        } else if (userAnswer === ""){
-            setText("Tu n'as pas répondu !"); 
-        } else if (Number(userAnswer) !== answer) {
+        } else if (Number(userAnswer) !== answer){
             setText("Essaie encore !");
+        } else {
+            setText("");
         }
     };
 
@@ -45,15 +45,6 @@ export default function Card() {
                 </div>
                 <div className={styles.questionButton}>
                     <Button title={"Valider"} onClick={() => handleClick()} />
-                </div>
-                <div className={styles.result}>
-                    {Number(userAnswer) === answer ? (
-                        <p className={styles.correct}>{text}</p>
-                    ) : Number(userAnswer) !== answer ? (
-                        <p className={styles.incorrect}>{text}</p>
-                    ) : (
-                        null
-                    )}
                 </div>
             </div>
         </div>

@@ -14,25 +14,25 @@ export default function ButtonList() {
                 <li>
                     <Button
                         title={"Addition"}
-                        onClick={() => selectQuizz("Addition", true)}
+                        onClick={() => selectQuizz("Addition", true, "addition")}
                     />
                 </li>
                 <li>
                     <Button
                         title={"Soustraction"}
-                        onClick={() => selectQuizz("Soustraction", true)}
+                        onClick={() => selectQuizz("Soustraction", true, "soustraction")}
                     />
                 </li>
                 <li>
                     <Button
                         title={"Multiplication"}
-                        onClick={() => selectQuizz("Multiplication", true)}
+                        onClick={() => selectQuizz("Multiplication", true, "multiplication")}
                     />
                 </li>
                 <li>
                     <Button
                         title={"Division"}
-                        onClick={() => selectQuizz("Division", true)}
+                        onClick={() => selectQuizz("Division", true, "division")}
                     />
                 </li>
             </ul>
