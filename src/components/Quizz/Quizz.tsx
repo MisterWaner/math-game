@@ -10,7 +10,7 @@ export default function Quizz() {
     return (
         <div className={styles.quizzContainer}>
             <h2 className={styles.h2}>{title}</h2>
-            <Card />
+            <Card/>
         </div>
     );
 }

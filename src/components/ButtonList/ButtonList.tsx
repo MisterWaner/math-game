@@ -4,9 +4,14 @@ import styles from "./ButtonList.module.css";
 import { useQuizzStore } from "../../store/QuizzStore";
 
 export default function ButtonList() {
+    const selectQuizz = useQuizzStore((state) => state.selectQuizz);
+    const generateQuestion = useQuizzStore((state) => state.generateQuestion);
+    //const title = useQuizzStore((state) => state.title);
+    //const isSelected = useQuizzStore((state) => state.isSelected);
 
-    const selectQuizz = useQuizzStore(state => state.selectQuizz);
-
+    const handleClick = (type: string) => {
+        generateQuestion(type);
+    };
     return (
         <div className={styles.container}>
             <h2>Choisi un quizz</h2>
@@ -14,25 +19,37 @@ export default function ButtonList() {
                 <li>
                     <Button
                         title={"Addition"}
-                        onClick={() => selectQuizz("Addition", true, "addition")}
+                        onClick={() => {
+                            handleClick("addition"),
+                            selectQuizz("Addition", true);
+                        }}
                     />
                 </li>
                 <li>
                     <Button
                         title={"Soustraction"}
-                        onClick={() => selectQuizz("Soustraction", true, "soustraction")}
+                        onClick={() => {
+                            handleClick("soustraction"),
+                            selectQuizz("Soustraction", true);
+                        }}
                     />
                 </li>
                 <li>
                     <Button
                         title={"Multiplication"}
-                        onClick={() => selectQuizz("Multiplication", true, "multiplication")}
+                        onClick={() => {
+                            handleClick("multiplication"),
+                            selectQuizz("Multiplication", true);
+                        }}
                     />
                 </li>
                 <li>
                     <Button
                         title={"Division"}
-                        onClick={() => selectQuizz("Division", true, "division")}
+                        onClick={() => {
+                            handleClick("division"),
+                            selectQuizz("Division", true);
+                        }}
                     />
                 </li>
             </ul>
