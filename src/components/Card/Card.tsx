@@ -17,7 +17,7 @@ export default function Card() {
     const question = useQuizzStore((state) => state.question);
     const type = useQuizzStore((state) => state.type);
 
-    const handleUserAnswer = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserAnswer(event.target.value);
     };
 
@@ -40,6 +40,7 @@ export default function Card() {
     const handleClick = () => {
         checkAnswer(userAnswer);
         setShowModal(true);
+        setUserAnswer("");
     };
 
     return (
@@ -52,7 +53,8 @@ export default function Card() {
                         <div className={styles.answerContainer}>
                             <label htmlFor="answer">Ta réponse</label>
                             <input
-                                onChange={handleUserAnswer}
+                                onChange={handleInputChange}
+                                value={userAnswer}
                                 type="text"
                                 id="answer"
                             />
