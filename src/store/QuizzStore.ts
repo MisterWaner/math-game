@@ -3,7 +3,7 @@ import { create } from "zustand";
 type QuizzState = {
     title: string;
     isSelected: boolean;
-    type: string | null;
+    type: string;
     question: { questionText: string | null; answer: number | null } | null;
     generateQuestion: (type: string) => void;
 };
@@ -13,11 +13,13 @@ type Action = {
         title: QuizzState["title"],
         isSelected: QuizzState["isSelected"]
     ) => void;
+    
 };
 
 export const useQuizzStore = create<QuizzState & Action>()((set) => ({
-    type: null,
+    type: "",
     title: "",
+    userAnswer: "",
     isSelected: false,
     selectQuizz(title, isSelected) {
         set({ title, isSelected });
