@@ -1,37 +1,8 @@
-.quizzContainer {
+/* .quizzContainer {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-rows: 100px 1fr 20%;
-    grid-template-columns: 1fr;
-
-    .quizzHeader {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 20%;
-        
-
-        .titleContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        .buttonContainer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-    }
 
     .playgroundContainer {
         width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 20%;
     }
-}
+} */

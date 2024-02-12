@@ -1,21 +1,61 @@
 .container {
     height: 100%;
+    display: grid;
+    grid-template-rows: 50px 1fr 2fr;
 
-    h2 {
-        margin: 20px 0;
-        text-align: center;
-    }
-    .menu {
-        height: 100%;
+    .titleContainer {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
+    }
+    .nameContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .formContainer {
+            width: 75%;
+            margin: 0 auto;
 
-        li {
-            list-style: none;
+            .inputContainer {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                label {
+                    width: 25%;
+                    padding-right: 10px;
+                    font-size: 1.25rem;
+                }
+                input {
+                    width: 50%;
+                    height: 50px;
+                    padding: 5px 10px;
+                    font-size: 1.25rem;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    outline-color: rgba(162, 28, 175, 1);
+                }
+            }
+        }
+    }
+    .menuContainer {
+        height: 100%;
+        .menu {
             width: 100%;
-            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            justify-content: start;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            li {
+                list-style: none;
+                width: 100%;
+                text-align: center;
+            }
         }
     }
 }

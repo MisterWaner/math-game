@@ -11,6 +11,9 @@ import Addition from "./pages/Addition";
 import Division from "./pages/Division";
 import Multiplication from "./pages/Multiplication";
 import Soustraction from "./pages/Soustraction";
+import Help from "./pages/Help";
+
+import Layout from "./Layout/Layout";
 
 
 function App() {
@@ -19,11 +22,14 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
-                <Route path="/" element={<Home />} />
-                <Route path="/addition" element={<Addition />} />
-                <Route path="/soustraction" element={<Soustraction />} />
-                <Route path="/multiplication" element={<Multiplication />} />
-                <Route path="/division" element={<Division />} />
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="/addition" element={<Addition />} />
+                    <Route path="/soustraction" element={<Soustraction />} />
+                    <Route path="/multiplication" element={<Multiplication />} />
+                    <Route path="/division" element={<Division />} />
+                    <Route path="/help" element={<Help />} />
+                </Route>
             </>
         )
     )

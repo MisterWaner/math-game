@@ -1,0 +1,16 @@
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+
+    .titleContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scoreContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}

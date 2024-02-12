@@ -1,14 +1,12 @@
 import Menu from "../components/Menu/Menu";
+import Score from "../components/Score/Score";
 
 export default function Home() {
     return (
         <>
-            <header>
-                <h1>Quizz Mathématique</h1>
-            </header>
-
             <main>
                 <Menu />
+                <Score />
             </main>
         </>
     );

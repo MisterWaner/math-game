@@ -21,22 +21,34 @@ export default function ButtonList() {
     };
     return (
         <div className={styles.container}>
-            <h2>Choisi un quizz</h2>
-            <ul className={styles.menu}>
-                {Links.map((link, index) => (
-                    <li key={index}>
-                        <Link to={link.path}>
-                            <Button
-                                title={link.title}
-                                onClick={() => {
-                                    handleClick(link.title.toLowerCase());
-                                    selectQuizz(link.title, true);
-                                }}
-                            />
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+            <div className={styles.titleContainer}>
+                <h2>Choisi un quizz</h2>
+            </div>
+            <div className={styles.nameContainer}>
+                <form className={styles.formContainer}>
+                    <div className={styles.inputContainer}>
+                        <label htmlFor="">Choisi ton pseudo :</label>
+                        <input type="text" />
+                    </div>
+                </form>
+            </div>
+            <div className={styles.menuContainer}>
+                <ul className={styles.menu}>
+                    {Links.map((link, index) => (
+                        <li key={index}>
+                            <Link to={link.path}>
+                                <Button
+                                    title={link.title}
+                                    onClick={() => {
+                                        handleClick(link.title.toLowerCase());
+                                        selectQuizz(link.title, true);
+                                    }}
+                                />
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
