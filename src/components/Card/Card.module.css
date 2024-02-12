@@ -1,6 +1,6 @@
 .container {
     width: 50%;
-    margin: 0 auto;
+    margin: 50px auto 0 auto;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -48,25 +48,3 @@
     align-items: center;
 }
 
-.result {
-    display: block;
-    margin-top: 1rem;
-    background-color: #f5d0fe;
-    padding: 1rem;
-    border-radius: 5px;
-    width: fit-content;
-}
-
-.noResult {
-    display: none;
-}
-
-.correct {
-    color: green;
-    font-weight: bold;
-}
-
-.incorrect {
-    color: red;
-    font-weight: bold;
-}
