@@ -1,3 +1,66 @@
 .container {
     width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    .titleContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .progressbarContainer {
+        width: 50%;
+        margin: 0 auto;
+
+        .progressBar {
+            height: 30px;
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 10px;;
+
+            .progressBarFill {
+                height: 100%;
+                border-radius: 10px;
+                background-color: #4caf50;
+                transition: width 0.5s ease-in-out;
+            }
+        }
+
+        .progressBarLabel {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        
+    }
+    .scoreContainer {
+        width: 50%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .score {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            
+            :first-child {
+                margin-right: 10px;
+            }
+        }
+
+        .buttonContainer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
