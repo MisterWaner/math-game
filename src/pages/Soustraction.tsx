@@ -8,7 +8,7 @@ export default function Soustraction() {
             <main>
                 <div className="pageContainer">
                     <div className="pageTitle">
-                        <h2>Addition</h2>
+                        <h2>Soustraction</h2>
                     </div>
                     <Quizz />
                     <QuizScore />

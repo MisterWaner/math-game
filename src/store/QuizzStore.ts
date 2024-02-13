@@ -6,6 +6,21 @@ type QuizzState = {
     type: string;
     question: { questionText: string | null; answer: number | null } | null;
     generateQuestion: (type: string) => void;
+    score: number;
+    player: string;
+    globalPercent: number;
+    incrementScore: () => void;
+    incrementQuestionCount: () => void;
+    resetQuestionCount: () => void;
+    resetScore: () => void;
+    setPlayer: (player: string) => void;
+    userAnswer: string;
+    questionCount: number;
+    totalQuestions: number;
+    progress: number;
+    totalProgress: number;
+    incrementProgress: () => void;
+    resetProgress: () => void;
 };
 
 type Action = {
@@ -16,7 +31,7 @@ type Action = {
     
 };
 
-export const useQuizzStore = create<QuizzState & Action>()((set) => ({
+export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
     type: "",
     title: "",
     userAnswer: "",
@@ -25,6 +40,41 @@ export const useQuizzStore = create<QuizzState & Action>()((set) => ({
         set({ title, isSelected });
     },
     question: null,
+    score: 0,
+    player: "",
+    questionCount: 0,
+    totalQuestions: 10,
+    globalPercent: 0,
+    progress: 0,
+    totalProgress: 100,
+    setPlayer: (player) => {
+        set({ player });
+    },
+    incrementScore: () => {
+        set((state) => ({ score: state.score + 1 }));
+    },
+    incrementQuestionCount: () => {
+        const {questionCount, totalQuestions} = get();
+        
+        for (let i = 0; i < totalQuestions; i++) {
+            set({ questionCount: questionCount + 1 });
+        }
+    },
+    resetQuestionCount: () => {
+        set({ questionCount: 0 });
+    },
+    resetScore: () => {
+        set({ score: 0 });
+    },
+    incrementProgress: () => {
+        const {progress, totalProgress} = get();
+        for (let i = 0; i < totalProgress ; i++) {
+            set({ progress: progress + 10 });
+        }
+    },
+    resetProgress: () => {
+        set({ progress: 0 });
+    },
 
     // Generate a question based on the type of quizz
     generateQuestion: (type) => {

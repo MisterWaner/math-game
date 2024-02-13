@@ -7,6 +7,8 @@ import Button from "../Button/Button";
 export default function Modal({ text, onClose, textStyle, type}: { text: string; onClose: () => void; textStyle: object; type: string;}) {
 
     const generateQuestion = useQuizzStore((state) => state.generateQuestion);
+    const incrementQuestionCount = useQuizzStore((state) => state.incrementQuestionCount);
+    const incrementProgress = useQuizzStore((state) => state.incrementProgress);
 
     return (
         <div className={styles.container}>
@@ -18,8 +20,10 @@ export default function Modal({ text, onClose, textStyle, type}: { text: string;
                     <p style={textStyle}>{text}</p>
                 </div>
                 <div className={styles.modalFooter}>
-                    <Button title="Question Suivante" onClick={() => {
+                    <Button title={"Question Suivante"} onClick={() => {
                         generateQuestion(type);
+                        incrementQuestionCount();
+                        incrementProgress();
                         onClose();
                     }} />
                 </div>

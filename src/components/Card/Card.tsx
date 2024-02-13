@@ -16,6 +16,9 @@ export default function Card() {
 
     const question = useQuizzStore((state) => state.question);
     const type = useQuizzStore((state) => state.type);
+    const incrementScore = useQuizzStore((state) => state.incrementScore);
+    const progress = useQuizzStore((state) => state.progress);
+    const totalProgress = useQuizzStore((state) => state.totalProgress);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserAnswer(event.target.value);
@@ -28,12 +31,18 @@ export default function Card() {
                     "Bravo ! Tu as trouvé la bonne réponse, continue comme ça !"
                 );
                 setTextStyle({ color: "#74b816" });
+                incrementScore();
             } else if (Number(userAnswer) !== question.answer) {
                 setText(`Dommage, la bonne réponse était ${question.answer}`);
                 setTextStyle({ color: "red" });
             } else {
                 setText("");
             }
+        }
+
+        if (progress === totalProgress) {
+            setText("Félicitations, tu as terminé le quizz !");
+            setTextStyle({ color: "#74b816" });
         }
     };
 
@@ -45,29 +54,41 @@ export default function Card() {
 
     return (
         <>
-            <div className={styles.container}>
-                <div className={styles.questionContainer}>
-                    <p className={styles.questionHeader}>Question</p>
-                    <div className={styles.questionContent}>
-                        <p>{question?.questionText}</p>
-                        <div className={styles.answerContainer}>
-                            <label htmlFor="answer">Ta réponse</label>
-                            <input
-                                onChange={handleInputChange}
-                                value={userAnswer}
-                                type="text"
-                                id="answer"
+            {progress === totalProgress ? (
+                <div className={styles.container}>
+                    <div className={styles.questionContainer}>
+                        <p className={styles.questionHeader}>Fin</p>
+                        <div className={styles.questionContent}>
+                            <p>Bravo, tu as terminé le quizz !</p>
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <div className={styles.container}>
+                    <div className={styles.questionContainer}>
+                        <p className={styles.questionHeader}>Question</p>
+                        <div className={styles.questionContent}>
+                            <p>{question?.questionText}</p>
+                            <div className={styles.answerContainer}>
+                                <label htmlFor="answer">Ta réponse</label>
+                                <input
+                                    onChange={handleInputChange}
+                                    value={userAnswer}
+                                    type="text"
+                                    id="answer"
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.questionButton}>
+                            <Button
+                                title={"Valider"}
+                                onClick={() => handleClick()}
                             />
                         </div>
                     </div>
-                    <div className={styles.questionButton}>
-                        <Button
-                            title={"Valider"}
-                            onClick={() => handleClick()}
-                        />
-                    </div>
                 </div>
-            </div>
+            )}
+
             {showModal &&
                 createPortal(
                     <Modal
@@ -77,8 +98,7 @@ export default function Card() {
                         type={type}
                     />,
                     document.body
-                )
-            }
+                )}
         </>
     );
 }
