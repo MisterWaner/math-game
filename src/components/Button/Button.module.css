@@ -11,7 +11,7 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #f5d0fe;
         color: black;
+        border: 1px solid black;   
     }
 }
