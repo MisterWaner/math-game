@@ -19,6 +19,8 @@ export default function Card() {
     const incrementScore = useQuizzStore((state) => state.incrementScore);
     const progress = useQuizzStore((state) => state.progress);
     const totalProgress = useQuizzStore((state) => state.totalProgress);
+    const setGlobalScore = useQuizzStore((state) => state.setGlobalScore);
+    const setGlobalTotalQuestions = useQuizzStore((state) => state.setGlobalTotalQuestions);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserAnswer(event.target.value);
@@ -52,6 +54,14 @@ export default function Card() {
         setUserAnswer("");
     };
 
+    const handleSaveScore = () => {
+        setShowModal(true);
+        setText("Ton score a été enregistré !");
+        setTextStyle({ color: "#74b816" });
+        setGlobalScore();
+        setGlobalTotalQuestions();
+    };
+
     return (
         <>
             {progress === totalProgress ? (
@@ -60,6 +70,12 @@ export default function Card() {
                         <p className={styles.questionHeader}>Fin</p>
                         <div className={styles.questionContent}>
                             <p>Bravo, tu as terminé le quizz !</p>
+                            <div className={styles.questionButton}>
+                            <Button
+                                title={"Enregistrer mon score"}
+                                onClick={() => handleSaveScore()}
+                            />
+                        </div>
                         </div>
                     </div>
                 </div>

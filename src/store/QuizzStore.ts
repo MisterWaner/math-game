@@ -7,6 +7,7 @@ type QuizzState = {
     question: { questionText: string | null; answer: number | null } | null;
     generateQuestion: (type: string) => void;
     score: number;
+    globalScore: number;
     player: string;
     globalPercent: number;
     incrementScore: () => void;
@@ -21,6 +22,10 @@ type QuizzState = {
     totalProgress: number;
     incrementProgress: () => void;
     resetProgress: () => void;
+    setGlobalPercent: () => void;
+    setGlobalScore: () => void;
+    globalTotalQuestions: number;
+    setGlobalTotalQuestions: () => void;
 };
 
 type Action = {
@@ -41,12 +46,14 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
     },
     question: null,
     score: 0,
+    globalScore: 0,
     player: "",
     questionCount: 0,
     totalQuestions: 10,
     globalPercent: 0,
     progress: 0,
     totalProgress: 100,
+    globalTotalQuestions: 0,
     setPlayer: (player) => {
         set({ player });
     },
@@ -74,6 +81,19 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
     },
     resetProgress: () => {
         set({ progress: 0 });
+    },
+    setGlobalPercent: () => {
+        const {globalScore, totalQuestions} = get();
+        const percent = (globalScore / totalQuestions) * 100;
+        set({ globalPercent: percent });
+    },
+    setGlobalScore: () => {
+        const {score} = get();
+        set((state) => ({ globalScore: state.globalScore + score }));
+    },
+    setGlobalTotalQuestions: () => {
+        const {totalQuestions} = get();
+        set((state) => ({ globalTotalQuestions: state.globalTotalQuestions + totalQuestions }));
     },
 
     // Generate a question based on the type of quizz
