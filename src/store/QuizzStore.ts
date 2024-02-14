@@ -33,7 +33,6 @@ type Action = {
         title: QuizzState["title"],
         isSelected: QuizzState["isSelected"]
     ) => void;
-    
 };
 
 export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
@@ -61,8 +60,8 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
         set((state) => ({ score: state.score + 1 }));
     },
     incrementQuestionCount: () => {
-        const {questionCount, totalQuestions} = get();
-        
+        const { questionCount, totalQuestions } = get();
+
         for (let i = 0; i < totalQuestions; i++) {
             set({ questionCount: questionCount + 1 });
         }
@@ -74,8 +73,8 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
         set({ score: 0 });
     },
     incrementProgress: () => {
-        const {progress, totalProgress} = get();
-        for (let i = 0; i < totalProgress ; i++) {
+        const { progress, totalProgress } = get();
+        for (let i = 0; i < totalProgress; i++) {
             set({ progress: progress + 10 });
         }
     },
@@ -83,17 +82,20 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
         set({ progress: 0 });
     },
     setGlobalPercent: () => {
-        const {globalScore, totalQuestions} = get();
+        const { globalScore, totalQuestions } = get();
         const percent = (globalScore / totalQuestions) * 100;
         set({ globalPercent: percent });
+        
     },
     setGlobalScore: () => {
-        const {score} = get();
+        const { score } = get();
         set((state) => ({ globalScore: state.globalScore + score }));
     },
     setGlobalTotalQuestions: () => {
-        const {totalQuestions} = get();
-        set((state) => ({ globalTotalQuestions: state.globalTotalQuestions + totalQuestions }));
+        const { totalQuestions } = get();
+        set((state) => ({
+            globalTotalQuestions: state.globalTotalQuestions + totalQuestions,
+        }));
     },
 
     // Generate a question based on the type of quizz
@@ -139,5 +141,5 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
             question = null;
         }
         set({ question, type });
-    }
+    },
 }));

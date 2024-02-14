@@ -19,6 +19,7 @@ export default function ButtonList() {
     const generateQuestion = useQuizzStore((state) => state.generateQuestion);
     const setPlayer = useQuizzStore((state) => state.setPlayer);
 
+
     const handleClick = (type: string) => {
         generateQuestion(type);
         console.log(type);

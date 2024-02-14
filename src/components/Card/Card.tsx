@@ -13,7 +13,7 @@ export default function Card() {
         color: "",
     });
     const [showModal, setShowModal] = useState<boolean>(false);
-
+    
     const question = useQuizzStore((state) => state.question);
     const type = useQuizzStore((state) => state.type);
     const incrementScore = useQuizzStore((state) => state.incrementScore);

@@ -2,10 +2,13 @@ import styles from "./Score.module.css";
 import { useQuizzStore } from "../../store/QuizzStore";
 
 export default function Score() {
-
     const globalScore = useQuizzStore((state) => state.globalScore);
-    const globalTotalQuestions = useQuizzStore((state) => state.globalTotalQuestions);
+    const globalTotalQuestions = useQuizzStore(
+        (state) => state.globalTotalQuestions
+    );
     const player = useQuizzStore((state) => state.player);
+    
+
 
     return (
         <div className={styles.container}>
@@ -16,7 +19,10 @@ export default function Score() {
                 <div className={styles.pseudoContainer}>
                     <p>{player.length === 0 ? "Pseudo" : player}</p>
                 </div>
-                <div className={styles.scoreValueContainer}>{globalScore} / {globalTotalQuestions} </div>
+                <div className={styles.scoreValueContainer}>
+                    {globalScore} / {globalTotalQuestions} ={" "}
+                    {Number(Math.round((globalScore / globalTotalQuestions) * 100))}%
+                </div>
             </div>
         </div>
     );
