@@ -5,6 +5,7 @@ export default function Score() {
 
     const globalScore = useQuizzStore((state) => state.globalScore);
     const globalTotalQuestions = useQuizzStore((state) => state.globalTotalQuestions);
+    const player = useQuizzStore((state) => state.player);
 
     return (
         <div className={styles.container}>
@@ -13,7 +14,7 @@ export default function Score() {
             </div>
             <div className={styles.scoreContainer}>
                 <div className={styles.pseudoContainer}>
-                    <p>Pseudo</p>
+                    <p>{player.length === 0 ? "Pseudo" : player}</p>
                 </div>
                 <div className={styles.scoreValueContainer}>{globalScore} / {globalTotalQuestions} </div>
             </div>
