@@ -5,27 +5,16 @@ type QuizzState = {
     isSelected: boolean;
     type: string;
     question: { questionText: string | null; answer: number | null } | null;
-    generateQuestion: (type: string) => void;
     score: number;
     globalScore: number;
     player: string;
     globalPercent: number;
-    incrementScore: () => void;
-    incrementQuestionCount: () => void;
-    resetQuestionCount: () => void;
-    resetScore: () => void;
-    setPlayer: (player: string) => void;
     userAnswer: string;
     questionCount: number;
     totalQuestions: number;
     progress: number;
     totalProgress: number;
-    incrementProgress: () => void;
-    resetProgress: () => void;
-    setGlobalPercent: () => void;
-    setGlobalScore: () => void;
     globalTotalQuestions: number;
-    setGlobalTotalQuestions: () => void;
 };
 
 type Action = {
@@ -33,6 +22,17 @@ type Action = {
         title: QuizzState["title"],
         isSelected: QuizzState["isSelected"]
     ) => void;
+    generateQuestion: (type: string) => void;
+    incrementScore: () => void;
+    incrementQuestionCount: () => void;
+    resetQuestionCount: () => void;
+    resetScore: () => void;
+    setPlayer: (player: string) => void;
+    setGlobalTotalQuestions: () => void;
+    incrementProgress: () => void;
+    resetProgress: () => void;
+    setGlobalPercent: () => void;
+    setGlobalScore: () => void;
 };
 
 export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
@@ -53,12 +53,15 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
     progress: 0,
     totalProgress: 100,
     globalTotalQuestions: 0,
+    // Set the player's name
     setPlayer: (player) => {
         set({ player });
     },
+    // Increment the score
     incrementScore: () => {
         set((state) => ({ score: state.score + 1 }));
     },
+    // Increment the question count
     incrementQuestionCount: () => {
         const { questionCount, totalQuestions } = get();
 
@@ -66,31 +69,37 @@ export const useQuizzStore = create<QuizzState & Action>()((set, get) => ({
             set({ questionCount: questionCount + 1 });
         }
     },
+    // Reset the question count
     resetQuestionCount: () => {
         set({ questionCount: 0 });
     },
+    // Reset the score
     resetScore: () => {
         set({ score: 0 });
     },
+    // Increment the progress bar
     incrementProgress: () => {
         const { progress, totalProgress } = get();
         for (let i = 0; i < totalProgress; i++) {
             set({ progress: progress + 10 });
         }
     },
+    // Reset the progress bar
     resetProgress: () => {
         set({ progress: 0 });
     },
+    // Set the global percentage
     setGlobalPercent: () => {
-        const { globalScore, totalQuestions } = get();
-        const percent = (globalScore / totalQuestions) * 100;
+        const { globalScore, globalTotalQuestions } = get();
+        const percent = (globalScore / globalTotalQuestions) * 100;
         set({ globalPercent: percent });
-        
     },
+    // Increment the global score
     setGlobalScore: () => {
         const { score } = get();
         set((state) => ({ globalScore: state.globalScore + score }));
     },
+    // Increment the total number of questions
     setGlobalTotalQuestions: () => {
         const { totalQuestions } = get();
         set((state) => ({

@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Modal.module.css";
 import { useQuizzStore } from "../../store/QuizzStore";
 import Button from "../Button/Button";
@@ -18,8 +20,14 @@ export default function Modal({
         (state) => state.incrementQuestionCount
     );
     const incrementProgress = useQuizzStore((state) => state.incrementProgress);
+    const setGlobalPercent = useQuizzStore((state) => state.setGlobalPercent);
+    const resetQuestionCount = useQuizzStore((state) => state.resetQuestionCount);
+    const resetScore = useQuizzStore((state) => state.resetScore);
+    const resetProgress = useQuizzStore((state) => state.resetProgress);
     const progress = useQuizzStore((state) => state.progress);
     const totalProgress = useQuizzStore((state) => state.totalProgress);
+
+    const navigate = useNavigate();
 
     const goOn = () => {
         generateQuestion(type);
@@ -30,6 +38,12 @@ export default function Modal({
 
     const handleClose = () => {
         onClose();
+        setGlobalPercent();
+        resetQuestionCount();
+        resetScore();
+        resetProgress();
+        generateQuestion(type);
+        navigate("/");
     };
 
     return (

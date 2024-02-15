@@ -7,8 +7,7 @@ export default function Score() {
         (state) => state.globalTotalQuestions
     );
     const player = useQuizzStore((state) => state.player);
-    
-
+    const globalPercent = useQuizzStore((state) => state.globalPercent);
 
     return (
         <div className={styles.container}>
@@ -21,7 +20,7 @@ export default function Score() {
                 </div>
                 <div className={styles.scoreValueContainer}>
                     {globalScore} / {globalTotalQuestions} ={" "}
-                    {Number(Math.round((globalScore / globalTotalQuestions) * 100))}%
+                    {Math.round(globalPercent)}%
                 </div>
             </div>
         </div>

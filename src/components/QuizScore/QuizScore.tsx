@@ -56,7 +56,7 @@ export default function QuizScore() {
                     <p>{localScore}/10</p>
                 </div>
                 <div className={styles.buttonContainer}>
-                    {progress > (totalProgress / 2) ? (
+                    {progress === (totalProgress / 10) ? (
                         <Button
                             title="Recommencer"
                             onClick={() => handleReset()}

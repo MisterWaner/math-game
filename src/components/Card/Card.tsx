@@ -21,7 +21,7 @@ export default function Card() {
     const totalProgress = useQuizzStore((state) => state.totalProgress);
     const setGlobalScore = useQuizzStore((state) => state.setGlobalScore);
     const setGlobalTotalQuestions = useQuizzStore((state) => state.setGlobalTotalQuestions);
-
+    
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserAnswer(event.target.value);
     };
@@ -60,7 +60,10 @@ export default function Card() {
         setTextStyle({ color: "#74b816" });
         setGlobalScore();
         setGlobalTotalQuestions();
+        
     };
+
+   
 
     return (
         <>
@@ -118,3 +121,4 @@ export default function Card() {
         </>
     );
 }
+
