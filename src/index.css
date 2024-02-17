@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 
+
+/* Global Styles */
 html {
     height: 100dvh;
     width: 100dvw;
@@ -40,5 +42,32 @@ body {
             }
         }
         
+    }
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1024px) {
+    body {
+        overflow-y: auto;
+        main {
+            grid-template-columns: 1fr;
+        }
+
+        .pageContainer {
+            grid-template-rows: 50px 2fr 2fr;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        main {
+            grid-template-columns: 1fr;
+        }
+
+        .pageContainer {
+            grid-template-rows: 50px 2fr 2fr;
+        }
     }
 }

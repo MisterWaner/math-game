@@ -68,3 +68,33 @@
         }
     }
 }
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-rows: 50px 2fr 2fr;
+        .nameContainer {
+            .formContainer {
+                grid-template-columns: 1fr;
+               
+                .inputContainer {
+                    width: 90%;
+                    margin: 0 auto;
+                    label {
+                        margin-right: 20px;
+                        font-size: 1rem;
+                    }
+                    input {
+                        width: 50%;
+                    }
+                }
+                .buttonContainer {
+                    width: 90%;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
