@@ -1,4 +1,3 @@
-import styles from "./Score.module.css";
 import { useQuizzStore } from "../../store/QuizzStore";
 
 export default function Score() {
@@ -10,15 +9,15 @@ export default function Score() {
     const globalPercent = useQuizzStore((state) => state.globalPercent);
 
     return (
-        <div className={styles.container}>
-            <div className={styles.titleContainer}>
+        <div className="flex flex-col">
+            <div>
                 <h2>Score</h2>
             </div>
-            <div className={styles.scoreContainer}>
-                <div className={styles.pseudoContainer}>
+            <div className="grid grid-cols-2 py-2">
+                <div className="flex justify-center items-center">
                     <p>{player.length === 0 ? "Pseudo" : player}</p>
                 </div>
-                <div className={styles.scoreValueContainer}>
+                <div className="flex justify-center items-center">
                     {globalScore} / {globalTotalQuestions} ={" "}
                     {Math.round(globalPercent)}%
                 </div>

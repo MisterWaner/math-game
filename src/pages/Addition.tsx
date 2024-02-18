@@ -5,8 +5,8 @@ import Score from "../components/Score/Score";
 export default function Addition() {
     return (
         <>
-            <main>
-                <div className="pageContainer">
+            <main className="w-full grid grid-cols-1 lg:grid-cols-[1fr_20%]">
+                <div >
                     <div className="pageTitle">
                         <h2>Addition</h2>
                     </div>

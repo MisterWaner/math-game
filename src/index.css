@@ -1,10 +1,6 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Global Styles */
 html {
@@ -21,53 +17,42 @@ body {
     width: 100%;
     font-family: "Roboto", sans-serif;
     background-color: #FAF3DD;
-
-    main {
-        height: calc(100dvh - 100px);
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 20%;
-    }
-
-    .pageContainer {
-        display: grid;
-        grid-template-rows: 50px 2fr 1fr;
-        .pageTitle {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            h2 {
-                text-align: center;
-                font-size: 1.25rem;
-            }
-        }
-        
-    }
 }
-
+main {
+    height: calc(100dvh - 100px);
+}
+.pageContainer {
+    display: grid;
+    grid-template-rows: 50px 2fr 1fr;
+}
+.pageTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2 {
+    text-align: center;
+    font-size: 1.25rem;
+}
 /* Media Queries */
 
 @media screen and (max-width: 1024px) {
     body {
-        overflow-y: auto;
-        main {
-            grid-template-columns: 1fr;
-        }
-
-        .pageContainer {
-            grid-template-rows: 50px 2fr 2fr;
-        }
+        overflow-y: auto;  
+    }
+    main {
+        grid-template-columns: 1fr;
+    }
+    .pageContainer {
+        grid-template-rows: 50px 2fr 2fr;
     }
 }
 
 @media screen and (max-width: 768px) {
-    body {
-        main {
-            grid-template-columns: 1fr;
-        }
-
-        .pageContainer {
-            grid-template-rows: 50px 2fr 2fr;
-        }
+    main {
+        grid-template-columns: 1fr;
+    }
+    .pageContainer {
+        grid-template-rows: 50px 2fr 2fr;
     }
 }

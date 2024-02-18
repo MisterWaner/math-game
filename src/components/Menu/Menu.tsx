@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useQuizzStore } from "../../store/QuizzStore";
 
 import Button from "../Button/Button";
-import styles from "./Menu.module.css";
 
 export default function ButtonList() {
     const Links: Array<{ title: string; path: string }> = [
@@ -14,11 +13,10 @@ export default function ButtonList() {
     ];
 
     const [playerName, setPlayerName] = useState<string>("");
-    
+
     const selectQuizz = useQuizzStore((state) => state.selectQuizz);
     const generateQuestion = useQuizzStore((state) => state.generateQuestion);
     const setPlayer = useQuizzStore((state) => state.setPlayer);
-
 
     const handleClick = (type: string) => {
         generateQuestion(type);
@@ -35,37 +33,47 @@ export default function ButtonList() {
         console.log(playerName);
     };
     return (
-        <div className={styles.container}>
-            <div className={styles.titleContainer}>
+        <div className="h-full px-4 grid grid-rows-[50px_1fr]">
+            <div className="flex flex-row justify-center items-center">
                 <h2>Choisi un quizz</h2>
             </div>
-            <div className={styles.nameContainer}>
-                <div className={styles.formContainer}>
-                    <div className={styles.inputContainer}>
-                        <label htmlFor="userName">Choisi ton pseudo :</label>
-                        <input type="text" id="userName" onChange={handleInputChange} value={playerName} />
-                    </div>
-                    <div className={styles.buttonContainer}>
-                        <Button title="Valider" onClick={handleSubmit} />
+            <div className="w-full grid grid-cols-1 md:grid-cols-2">
+                <div className="w-full flex justify-center items-center">
+                    <div className="w-full grid grid-col-1 gap-2.5">
+                        <div className="w-1/2 flex flex-col items-center justify-center">
+                            <label htmlFor="userName" className="text-base md:text-lg">
+                                Choisi ton pseudo :
+                            </label>
+                            <input
+                                className="h-[50px] px-2.5 py-1.5 text-lg rounded outline-black"
+                                type="text"
+                                id="userName"
+                                onChange={handleInputChange}
+                                value={playerName}
+                            />
+                        </div>
+                        <div className="w-1/2 flex justify-center items-center">
+                            <Button title="Valider" onClick={handleSubmit} />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.menuContainer}>
-                <ul className={styles.menu}>
-                    {Links.map((link, index) => (
-                        <li key={index}>
-                            <Link to={link.path}>
-                                <Button
-                                    title={link.title}
-                                    onClick={() => {
-                                        handleClick(link.title.toLowerCase());
-                                        selectQuizz(link.title, true);
-                                    }}
-                                />
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <div className="w-full h-full">
+                    <ul className="menu w-full flex justify-around items-center rounded cursor-pointer">
+                        {Links.map((link, index) => (
+                            <li key={index} className="list-none w-full text-center">
+                                <Link to={link.path}>
+                                    <Button
+                                        title={link.title}
+                                        onClick={() => {
+                                            handleClick(link.title.toLowerCase());
+                                            selectQuizz(link.title, true);
+                                        }}
+                                    />
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );
