@@ -16,7 +16,7 @@ body {
     height: 100%;
     width: 100%;
     font-family: "Roboto", sans-serif;
-    background-color: #FAF3DD;
+    background-color: #fffbeb;
 }
 main {
     height: calc(100dvh - 100px);
@@ -34,11 +34,15 @@ h2 {
     text-align: center;
     font-size: 1.25rem;
 }
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 1024px) {
     body {
-        overflow-y: auto;  
+        overflow-y: auto;
     }
     main {
         grid-template-columns: 1fr;

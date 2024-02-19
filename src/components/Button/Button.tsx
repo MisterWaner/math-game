@@ -6,7 +6,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ title, onClick }) => {
     return (
         <button
-            className="w-full bg-transparent border border-white rounded text-black py-2 px-1 text-center inline-block text-base cursor-pointer hover:border-black"
+            className="w-fit bg-transparent border border-black rounded text-black py-2 px-6 text-center inline-block text-base cursor-pointer hover:bg-amber-200"
             onClick={onClick}
         >
             {title}

@@ -37,42 +37,58 @@ export default function ButtonList() {
             <div className="flex flex-row justify-center items-center">
                 <h2>Choisi un quizz</h2>
             </div>
-            <div className="w-full grid grid-cols-1 md:grid-cols-2">
-                <div className="w-full flex justify-center items-center">
-                    <div className="w-full grid grid-col-1 gap-2.5">
-                        <div className="w-1/2 flex flex-col items-center justify-center">
-                            <label htmlFor="userName" className="text-base md:text-lg">
+            <div className="w-full grid grid-cols-1 grid-rows-[45%_1fr] md:grid-cols-2 md:grid-rows-1 md:mt-10">
+                <div className="w-full h-fit flex justify-center items-center md:items-start">
+                    <div className="w-full h-fit grid grid-cols-1 grid-rows-2 gap-2.5 ">
+                        <div className="w-2/3 place-self-center md:place-self-start md:ml-5">
+                            <label
+                                htmlFor="userName"
+                                className="w-full mb-2 text-base md:text-lg"
+                            >
                                 Choisi ton pseudo :
                             </label>
                             <input
-                                className="h-[50px] px-2.5 py-1.5 text-lg rounded outline-black"
+                                className="w-full h-[50px] px-2.5 py-1.5 text-lg rounded outline-amber-200"
                                 type="text"
                                 id="userName"
                                 onChange={handleInputChange}
                                 value={playerName}
                             />
                         </div>
-                        <div className="w-1/2 flex justify-center items-center">
+                        <div className="w-2/3 place-self-center md:place-self-start md:ml-5">
                             <Button title="Valider" onClick={handleSubmit} />
                         </div>
                     </div>
                 </div>
-                <div className="w-full h-full">
-                    <ul className="menu w-full flex justify-around items-center rounded cursor-pointer">
-                        {Links.map((link, index) => (
-                            <li key={index} className="list-none w-full text-center">
-                                <Link to={link.path}>
-                                    <Button
-                                        title={link.title}
-                                        onClick={() => {
-                                            handleClick(link.title.toLowerCase());
-                                            selectQuizz(link.title, true);
-                                        }}
-                                    />
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                <div className="w-full flex justify-center items-start">
+                    <div className="w-full grid grid-cols-1">
+                        <div className="dropdown inline-block relative w-2/3 place-self-center md:place-self-start md:ml-5">
+                            <Button
+                                title="Choisi un quizz"
+                                onClick={() => {}}
+                            />
+                            <ul className="dropdown-menu absolute hidden pt-1 ">
+                                {Links.map((link, index) => (
+                                    <li
+                                        key={index}
+                                        className="py-2 px-4 block whitespace-no-wrap bg-amber-300 first:rounded-t last:rounded-b hover:bg-amber-200"
+                                    >
+                                        <Link
+                                            to={link.path}
+                                            onClick={() => {
+                                                selectQuizz(link.title, true);
+                                                handleClick(
+                                                    link.title.toLowerCase()
+                                                );
+                                            }}
+                                        >
+                                            {link.title}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

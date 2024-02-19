@@ -9,7 +9,7 @@ export default function Score() {
     const globalPercent = useQuizzStore((state) => state.globalPercent);
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-full justify-start">
             <div>
                 <h2>Score</h2>
             </div>
