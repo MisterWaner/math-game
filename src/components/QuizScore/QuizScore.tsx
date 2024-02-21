@@ -13,7 +13,8 @@ export default function QuizScore() {
     const resetProgress = useQuizzStore((state) => state.resetProgress);
     const type = useQuizzStore((state) => state.type);
 
-    const getColor = () => {
+    // Set the color of the progress bar
+    const setColor = () => {
         if (progress < 30) {
             return "red";
         } else if (progress < 50) {
@@ -43,7 +44,7 @@ export default function QuizScore() {
                         className="h-full rounded-lg bg-green-500 transition-all duration-500 ease-in-out"
                         style={{
                             width: `${progress}%`,
-                            backgroundColor: getColor(),
+                            backgroundColor: setColor(),
                         }}
                     ></div>
                 </div>

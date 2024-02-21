@@ -5,6 +5,8 @@ import Button from "../Button/Button";
 import { useQuizzStore } from "../../store/QuizzStore";
 import Modal from "../Modal/Modal";
 
+/** Component representing the card playground where quizz is set */
+
 export default function Card() {
     const [userAnswer, setUserAnswer] = useState<string>("");
     const [text, setText] = useState<string>("");
@@ -12,19 +14,23 @@ export default function Card() {
         color: "",
     });
     const [showModal, setShowModal] = useState<boolean>(false);
-    
+
     const question = useQuizzStore((state) => state.question);
     const type = useQuizzStore((state) => state.type);
     const incrementScore = useQuizzStore((state) => state.incrementScore);
     const progress = useQuizzStore((state) => state.progress);
     const totalProgress = useQuizzStore((state) => state.totalProgress);
     const setGlobalScore = useQuizzStore((state) => state.setGlobalScore);
-    const setGlobalTotalQuestions = useQuizzStore((state) => state.setGlobalTotalQuestions);
-    
+    const setGlobalTotalQuestions = useQuizzStore(
+        (state) => state.setGlobalTotalQuestions
+    );
+
+    // Handle the answer input change
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserAnswer(event.target.value);
     };
 
+    // Check if the user answer is correct
     const checkAnswer = (userAnswer: string) => {
         if (question) {
             if (Number(userAnswer) === question.answer) {
@@ -41,28 +47,28 @@ export default function Card() {
             }
         }
 
+        // If the user has answered all the questions
         if (progress === totalProgress) {
             setText("Félicitations, tu as terminé le quizz !");
             setTextStyle({ color: "#74b816" });
         }
     };
 
+    // Handle the click on the validate button
     const handleClick = () => {
         checkAnswer(userAnswer);
         setShowModal(true);
         setUserAnswer("");
     };
 
+    // Handle the click on the save score button
     const handleSaveScore = () => {
         setShowModal(true);
         setText("Ton score a été enregistré !");
         setTextStyle({ color: "#74b816" });
         setGlobalScore();
         setGlobalTotalQuestions();
-        
     };
-
-   
 
     return (
         <>
@@ -73,11 +79,11 @@ export default function Card() {
                         <div className="text-lg">
                             <p>Bravo, tu as terminé le quizz !</p>
                             <div className="w-full mt-12 flex justify-start items-center">
-                            <Button
-                                title={"Enregistrer mon score"}
-                                onClick={() => handleSaveScore()}
-                            />
-                        </div>
+                                <Button
+                                    title={"Enregistrer mon score"}
+                                    onClick={() => handleSaveScore()}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +94,12 @@ export default function Card() {
                         <div className="text-lg">
                             <p>{question?.questionText}</p>
                             <div className="w-4/5 mt-4 flex flex-col gap-1">
-                                <label htmlFor="answer" className="italic text-xs">Ta réponse</label>
+                                <label
+                                    htmlFor="answer"
+                                    className="italic text-xs"
+                                >
+                                    Ta réponse
+                                </label>
                                 <input
                                     className="w-full px-2.5 py-1.5 text-sm md:text-base rounded outline-amber-200"
                                     onChange={handleInputChange}
@@ -121,4 +132,3 @@ export default function Card() {
         </>
     );
 }
-

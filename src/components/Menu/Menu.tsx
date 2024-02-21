@@ -18,15 +18,18 @@ export default function ButtonList() {
     const generateQuestion = useQuizzStore((state) => state.generateQuestion);
     const setPlayer = useQuizzStore((state) => state.setPlayer);
 
+    // Handle the click on the quizz button
     const handleClick = (type: string) => {
         generateQuestion(type);
         console.log(type);
     };
 
+    // Handle the player name input change
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPlayerName(event.target.value);
     };
 
+    // Handle the player name input validation
     const handleSubmit = () => {
         setPlayer(playerName);
         setPlayerName("");
