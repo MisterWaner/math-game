@@ -35,7 +35,7 @@ export default function ButtonList() {
     return (
         <div className="h-full px-4 grid grid-rows-[50px_1fr]">
             <div className="flex flex-row justify-center items-center">
-                <h2>Choisi un quizz</h2>
+                <h2 className="text-lg md:text-xl font-semibold">Choisi un quizz</h2>
             </div>
             <div className="w-full grid grid-cols-1 grid-rows-[45%_1fr] md:grid-cols-2 md:grid-rows-1 md:mt-10">
                 <div className="w-full h-fit flex justify-center items-center md:items-start">
@@ -43,12 +43,12 @@ export default function ButtonList() {
                         <div className="w-2/3 place-self-center md:place-self-start md:ml-5">
                             <label
                                 htmlFor="userName"
-                                className="w-full mb-2 text-base md:text-lg"
+                                className="w-full mb-2 text-xs md:text-sm lg:text-base"
                             >
                                 Choisi ton pseudo :
                             </label>
                             <input
-                                className="w-full h-[50px] px-2.5 py-1.5 text-lg rounded outline-amber-200"
+                                className="w-full px-2.5 py-1.5 text-sm md:text-base rounded outline-amber-200"
                                 type="text"
                                 id="userName"
                                 onChange={handleInputChange}
@@ -71,7 +71,7 @@ export default function ButtonList() {
                                 {Links.map((link, index) => (
                                     <li
                                         key={index}
-                                        className="py-2 px-4 block whitespace-no-wrap bg-amber-300 first:rounded-t last:rounded-b hover:bg-amber-200"
+                                        className="py-2 px-4 text-xs block whitespace-no-wrap bg-amber-300 first:rounded-t last:rounded-b hover:bg-amber-200 md:text-sm lg:text-base"
                                     >
                                         <Link
                                             to={link.path}

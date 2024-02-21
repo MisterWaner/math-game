@@ -11,9 +11,9 @@ export default function Score() {
     return (
         <div className="flex flex-col h-full justify-start">
             <div>
-                <h2>Score</h2>
+                <h2 className="text-lg md:text-xl font-semibold">Score</h2>
             </div>
-            <div className="grid grid-cols-2 py-2">
+            <div className="grid grid-cols-2 py-2 text-sm md:text-base">
                 <div className="flex justify-center items-center">
                     <p>{player.length === 0 ? "Pseudo" : player}</p>
                 </div>
