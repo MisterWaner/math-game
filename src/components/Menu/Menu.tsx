@@ -21,7 +21,6 @@ export default function ButtonList() {
     // Handle the click on the quizz button
     const handleClick = (type: string) => {
         generateQuestion(type);
-        console.log(type);
     };
 
     // Handle the player name input change
