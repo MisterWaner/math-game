@@ -6,7 +6,6 @@
 html {
     height: 100dvh;
     width: 100dvw;
-    overflow: hidden;
 }
 #root {
     height: 100%;
@@ -19,44 +18,9 @@ body {
     background-color: #fffbeb;
 }
 main {
-    height: calc(100dvh - 100px);
-}
-.pageContainer {
-    display: grid;
-    grid-template-rows: 50px 2fr 1fr;
-}
-.pageTitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-h2 {
-    text-align: center;
-    font-size: 1.25rem;
+    height: calc(100dvh - 100px)
 }
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Media Queries */
-
-@media screen and (max-width: 1024px) {
-    body {
-        overflow-y: auto;
-    }
-    main {
-        grid-template-columns: 1fr;
-    }
-    .pageContainer {
-        grid-template-rows: 50px 2fr 2fr;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    main {
-        grid-template-columns: 1fr;
-    }
-    .pageContainer {
-        grid-template-rows: 50px 2fr 2fr;
-    }
-}

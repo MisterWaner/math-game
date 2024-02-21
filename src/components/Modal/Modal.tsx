@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import styles from "./Modal.module.css";
 import { useQuizzStore } from "../../store/QuizzStore";
 import Button from "../Button/Button";
 
@@ -21,7 +20,9 @@ export default function Modal({
     );
     const incrementProgress = useQuizzStore((state) => state.incrementProgress);
     const setGlobalPercent = useQuizzStore((state) => state.setGlobalPercent);
-    const resetQuestionCount = useQuizzStore((state) => state.resetQuestionCount);
+    const resetQuestionCount = useQuizzStore(
+        (state) => state.resetQuestionCount
+    );
     const resetScore = useQuizzStore((state) => state.resetScore);
     const resetProgress = useQuizzStore((state) => state.resetProgress);
     const progress = useQuizzStore((state) => state.progress);
@@ -47,15 +48,14 @@ export default function Modal({
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.modal}>
-                <div className={styles.modalHeader}>
-                    <button onClick={onClose}>X</button>
+        <div className="fixed top-0 left-0 z-10 w-full h-full bg-black/50 flex justify-center items-center">
+            <div className="bg-amber-50 w-5/6 p-5 rounded-lg md:w-3/6 lg:w-2/6">
+                <div className="flex flex-col items-center mt-5">
+                    <p style={textStyle} className="text-lg font-semibold mb-5">
+                        {text}
+                    </p>
                 </div>
-                <div className={styles.modalContent}>
-                    <p style={textStyle}>{text}</p>
-                </div>
-                <div className={styles.modalFooter}>
+                <div className="flex justify-center ">
                     <Button
                         title={
                             progress === totalProgress

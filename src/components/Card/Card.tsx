@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 
-import styles from "./Card.module.css";
 import Button from "../Button/Button";
 import { useQuizzStore } from "../../store/QuizzStore";
 import Modal from "../Modal/Modal";
@@ -68,12 +67,12 @@ export default function Card() {
     return (
         <>
             {progress === totalProgress ? (
-                <div className={styles.container}>
-                    <div className={styles.questionContainer}>
-                        <p className={styles.questionHeader}>Fin</p>
-                        <div className={styles.questionContent}>
+                <div className="w-11/12 p-8 rounded-lg mx-auto mt-4 bg-white/50 md:w-8/12 xl:w-6/12">
+                    <div className="w-full">
+                        <p className="font-bold text-xl mb-4">Fin</p>
+                        <div className="text-lg">
                             <p>Bravo, tu as terminé le quizz !</p>
-                            <div className={styles.questionButton}>
+                            <div className="w-full mt-12 flex justify-start items-center">
                             <Button
                                 title={"Enregistrer mon score"}
                                 onClick={() => handleSaveScore()}
@@ -83,22 +82,23 @@ export default function Card() {
                     </div>
                 </div>
             ) : (
-                <div className={styles.container}>
-                    <div className={styles.questionContainer}>
-                        <p className={styles.questionHeader}>Question</p>
-                        <div className={styles.questionContent}>
+                <div className="w-11/12 p-8 rounded-lg mx-auto mt-4 bg-white/50 md:w-8/12 xl:w-6/12">
+                    <div className="w-full">
+                        <p className="font-bold text-xl mb-4">Question</p>
+                        <div className="text-lg">
                             <p>{question?.questionText}</p>
-                            <div className={styles.answerContainer}>
-                                <label htmlFor="answer">Ta réponse</label>
+                            <div className="w-4/5 mt-4 flex flex-col gap-1">
+                                <label htmlFor="answer" className="italic text-xs">Ta réponse</label>
                                 <input
+                                    className="w-full px-2.5 py-1.5 text-sm md:text-base rounded outline-amber-200"
                                     onChange={handleInputChange}
                                     value={userAnswer}
-                                    type="text"
+                                    type="number"
                                     id="answer"
                                 />
                             </div>
                         </div>
-                        <div className={styles.questionButton}>
+                        <div className="w-full mt-12 flex justify-start items-center">
                             <Button
                                 title={"Valider"}
                                 onClick={() => handleClick()}

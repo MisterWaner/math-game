@@ -1,6 +1,5 @@
 import { useQuizzStore } from "../../store/QuizzStore";
 import Button from "../Button/Button";
-import styles from "./QuizScore.module.css";
 
 export default function QuizScore() {
     const localScore = useQuizzStore((state) => state.score);
@@ -34,28 +33,28 @@ export default function QuizScore() {
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.titleContainer}>
+        <div className="w-full grid grid-rows-[20%_20%_60%]">
+            <div className="flex justify-center items-center">
                 <h3>Ta progression</h3>
             </div>
-            <div className={styles.progressbarContainer}>
-                <div className={styles.progressBar}>
+            <div className="w-3/6 mx-auto my-0">
+                <div className="h-7 w-full bg-neutral-200 rounded-lg mb-2">
                     <div
-                        className={styles.progressBarFill}
+                        className="h-full rounded-lg bg-green-500 transition-all duration-500 ease-in-out"
                         style={{
                             width: `${progress}%`,
                             backgroundColor: getColor(),
                         }}
                     ></div>
                 </div>
-                <div className={styles.progressBarLabel}>{progress}%</div>
+                <div className="mt-2 text-2xl font-bold text-center">{progress}%</div>
             </div>
-            <div className={styles.scoreContainer}>
-                <div className={styles.score}>
-                    <p>Score :</p>
+            <div className="w-5/6 mx-auto my-0 grid grid-cols-1">
+                <div className="w-full flex justify-center items-start text-xl">
+                    <p className="mr-2">Score :</p>
                     <p>{localScore}/10</p>
                 </div>
-                <div className={styles.buttonContainer}>
+                <div className="w-full flex justify-center items-start">
                     {progress === (totalProgress / 10) ? (
                         <Button
                             title="Recommencer"
